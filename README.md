@@ -11,25 +11,25 @@ The students will need to follow some precise specifications in order for their 
 5. The instructor will produce Room0_instructorName.py as the introductory room. When the player exits room 0 they will be in room 1.
 9. A sample (very simple) completed map.txt is shown here for reference - assuming 4 students would participate here is an example generated map with the instructor additions:
 
-Room:0  
+Room:0 - jeff  
 down,1  
 
-Room:1  
+Room:1 - Tom Hiddleston
 south,2  
 east,3  
 
-Room:2  
+Room:2 - Ryan Gosling
 north,1  
 
-Room:3  
+Room:3 - Sarah Brightman
 west,1  
 north,4  
 
-Room:4  
+Room:4 - Millie Bobby Brown
 south,3  
 up,5  
 
-Room:5  
+Room:5 - Dwayne Johnson
 end,5  
 
  11. The students will need to create the rooms associated with their name. They will look at the connections to their room and make sure that their descriptions match those connections and that the player can GO or MOVE in those directions. Here are the requirements for the rooms:
