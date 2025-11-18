@@ -60,6 +60,7 @@ This repo has the following files:
 + Room0_jeff.py	- an example starter room
 + Room1_example.py - placeholder room
 + Room2_example.py - placeholder room
++ Room3_example.py - placeholder room
 + Adventure.py - the game 'engine' 
 + object.py - the base class for objects	
 + README.md - this file
