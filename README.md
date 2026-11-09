@@ -9,50 +9,45 @@ The students will need to follow some precise specifications in order for their 
 2. The room in the map document will list what exits need to be implemented.
 3. The map.txt will start at room 1 for student assignments and will specify what 'exits' the student's rooms need to support.
 5. The instructor will produce Room0_instructorName.py as the introductory room. When the player exits room 0 they will be in room 1.
-9. A sample (very simple) completed map.txt is shown here for reference - assuming 4 students would participate here is an example generated map with the instructor additions:
+9. The current map.txt is shown here for reference. It contains four rooms, all authored by jeff:
 
-Room:0 - jeff    
-down,1  
+```text
+Room:0:jeff
+ down,1
 
-Room:1 - Tom Hiddleston  
-south,2  
-east,3  
+Room:1:jeff
+ east,2
+ north,3
 
-Room:2 - Ryan Gosling  
-north,1  
+Room:2:jeff
+ west,1
+ up,3
 
-Room:3 - Sarah Brightman  
-west,1  
-north,4  
-
-Room:4 - Millie Bobby Brown  
-south,3  
-up,5  
-
-Room:5 - Dwayne Johnson  
-end,5  
+Room:3:jeff
+ down,2
+```
 
  11. The students will need to create the rooms associated with their name. They will look at the connections to their room and make sure that their descriptions match those connections and that the player can GO or MOVE in those directions. Here are the requirements for the rooms:
- 12. Rooms are written as stand alone python programs. The file name is important and must follow the specification: Room[number]_[student_name].py
+ 12. Rooms are written as **stand alone python programs.** The file name is important and must follow the specification: Room[number]_[student_name].py
  14. EVERY ROOM  must support the following commands at a minimum:
      
-+ go, move [direction] - allows the player to move to the next Room. Players can only move in the directions allowed by the specification for the room. 
-+ look [item] - provides a description of the item. the item can be in the player's inventory or it can be in an object array in the room. If no [item] is given, the room description is printed.
-+ get, take [item] - allows the player to pick up the item and put it into their inventory. The room must create an object of type Object for the player to pick it up. (See Objects) below.
-+ drop [item] - allows the player to remove an item from their inventory and place it in the room's list of Objects.
-+ inventory - prints out the items in the PLAYERs inventory.
-+ stats - prints out the PLAYERs statistics
-+ help,? - prints out the list of commands
-+ hint - prints out a room-specific hint that will help the player get through the puzzle in the room
-+ quit - asks "Are you sure? (y/n) and if y prints out the player stats and ends the game.
++ **go, move [direction]** - allows the player to move to the next Room. Players can only move in the directions allowed by the specification for the room. 
++ **look [item]** - provides a description of the item. the item can be in the player's inventory or it can be in an object array in the room. If no [item] is given, the room description is printed.
++ **get, take [item]** - allows the player to pick up the item and put it into their inventory. The room must create an object of type Object for the player to pick it up. (See Objects) below.
++ **drop [item]** - allows the player to remove an item from their inventory and place it in the room's list of Objects.
++ **inventory** - prints out the items in the PLAYERs inventory.
++ **stats** - prints out the PLAYERs statistics
++ **help,?** - prints out the list of commands
++ **hint** - prints out a room-specific hint that will help the player get through the puzzle in the room
++ **quit** - asks "Are you sure? (y/n) and if y prints out the player stats and ends the game.
 
 15. Rooms can also support any custom commands that will support solving the puzzle. For example, a room could have a fountain in it, and the PLAYER could say "drink fountain" and the room would respond with a result. If the puzzle is hard, giving a hint is a good idea to keep the players from rage quitting.
-16. OBJECTS - PLAYERS have an inventory and rooms have an list of Objects. Rooms must support dropping items so they MUST support an object list in some way. It doesn't matter what the room's object list is called, only that when a player drops something it goes out of the inventory and into the room's object list. If the player wants to get the object again, they should be able to do so. You could also make it so that the object would get destroyed if they did something crazy with it. Like there could be a pit in the room and the PLAYER could say "throw lamp in pit" and the result could be that the lamp is now gone.
-    + All game Objects inherit from a base Object class that has a pure virtual function called "use"
+16. **OBJECTS** - PLAYERS have an inventory and rooms have a list of Objects. Rooms must support dropping items so they MUST support an object list in some way. It doesn't matter what the room's object list is called, only that when a player drops something it goes out of the inventory and into the room's object list. If the player wants to get the object again, they should be able to do so, unless it is part of the puzzle of the room. You could also make it so that the object would get destroyed if they did something crazy with it. Like there could be a pit in the room and the PLAYER could say "throw lamp in pit" and the result could be that the lamp is now gone.
+    + All game Objects must inherit from a base Object class that has a **pure virtual** function called "use"
     + You create an object by subclassing Object and implementing the use function.
-    + The lamp is the example of how to implement an object. Take a look at the lamp defined in Room0.
-17. The students should try to write the room descriptions so that they indicate the exits available in the room.
-18.  When the room is complete the **room should return the direction that the PLAYER has chosen or that is the result of the solution to the puzzle.** For example if the PLAYER chooses "north" the room should return "north". The room MUST ONLY return directions that were part of it's assignment in the map.txt file. 
+    + The lamp in Room0 is the example of how to implement an object. Take a look at the lamp defined in Room0.
+17. The students should try to write the room descriptions so that they indicate the exits available in the room so that the game is playable. However, if you want to implement a secret exit, pick one of your exits and make sure it isn't obvious. Require the player to 'search' or something and then reveal the exit by changing the description of the room on the fly. You have a TON of flexibility of what you can do in your room.
+18.  When the room is complete the **room should return the direction that the PLAYER has chosen or that is the result of the solution to the puzzle.** For example if the PLAYER chooses "north" and that is a valid direction, the program should end and return "north". The room MUST ONLY return directions that were part of it's assignment in the map.txt file. 
 
 This repo has the following files:
 + map.txt - the map file
@@ -76,4 +71,4 @@ Once all of the rooms have been created, when they are placed in the same direct
 
 Lastly, the primary purpose for this activity is for you to have some fun. Do something cool - spend some good time on it, think about it and make it worthwhile. The whole game will be better for your efforts. 
 
-
+Also remember that we will be reviewing each other's code. If your code is entirely generated by AI, and someone is reviewing it, and asks you questions, it is not acceptable to say "I don't know." You must take responsibility for your code. Write as much of it as you can. Get the AI to help you if you like, but take full ownership of the code it produces. 
