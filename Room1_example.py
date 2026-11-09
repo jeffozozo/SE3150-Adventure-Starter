@@ -90,8 +90,8 @@ class Room:
             print("You head through the door to the east.")
             return "east"
         elif direction in ["north", "n","passage"]:
-            print("You head through the door to the east.")
-            return "east"
+            print("You head through the narrow passage to the north.")
+            return "north"
         else:
 
             print("You can't go that way.")
